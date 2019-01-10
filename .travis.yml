@@ -12,6 +12,12 @@ before_install:
 # Add gcloud to $PATH
 - source $HOME/google-cloud-sdk/path.bash.inc
 - gcloud version
+- gcloud components update kubectl
+- gcloud auth activate-service-account --key-file client-secret.json
+- gcloud config set project code-and-play
+- gcloud config set compute/zone europe-west3-c
+- gcloud container clusters get-credentials cap
+- kubectl get ns
 
 #before_script:
 #- ./scripts/image-prepare.sh $FULL_IMAGE_NAME
