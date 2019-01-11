@@ -1,4 +1,4 @@
-package com.senacor.cap.service.user
+package com.senacor.cap.service.message
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @SpringBootTest
-class UserApplicationTests {
+class ApplicationTests {
 
 	@Test
 	fun contextLoads() {

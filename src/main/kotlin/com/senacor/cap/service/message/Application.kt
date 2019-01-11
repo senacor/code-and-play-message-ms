@@ -1,11 +1,11 @@
-package com.senacor.cap.service.user
+package com.senacor.cap.service.message
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class UserApplication
+class Application
 
 fun main(args: Array<String>) {
-    runApplication<UserApplication>(*args)
+    runApplication<Application>(*args)
 }
