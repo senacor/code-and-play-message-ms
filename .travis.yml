@@ -30,14 +30,14 @@ before_install:
 
 # build and push the docker image
 script:
-- source buid_vars.sh
+- source ./scripts/buid_vars.sh
 - docker build --no-cache=true -t $DOCKER_IMAGE .
 - docker tag $DOCKER_IMAGE eu.gcr.io/code-and-play/$DOCKER_IMAGE
 - gcloud docker -- push eu.gcr.io/code-and-play/$DOCKER_IMAGE
 
 
 before_deploy:
-- ./prepare_deployment_files.sh
+- ./scripts/prepare_deployment_files.sh
 
 deploy:
   provider: script
