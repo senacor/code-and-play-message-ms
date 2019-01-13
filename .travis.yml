@@ -35,10 +35,11 @@ script:
 - docker tag $DOCKER_IMAGE eu.gcr.io/code-and-play/$DOCKER_IMAGE
 - gcloud docker -- push eu.gcr.io/code-and-play/$DOCKER_IMAGE
 
-
+# prepare kubernetes deployment files
 before_deploy:
 - ./scripts/prepare_deployment_files.sh
 
+# deploy to cluster
 deploy:
   provider: script
   script: kubectl apply -f ./target/kubernetes/
