@@ -32,15 +32,16 @@ before_install:
 
 # build and push the docker image
 script:
-- docker build --no-cache=true -t $SERVICE_NAME:$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER .
-- gcloud docker -- push $SERVICE_NAME:$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER
+- docker build --no-cache=true -t $SERVICE_NAME-$TRAVIS_BRANCH:$TRAVIS_BUILD_NUMBER .
+- docker tag $SERVICE_NAME:$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER eu.gcr.io/code-and-play/$SERVICE_NAME-$TRAVIS_BRANCH:$TRAVIS_BUILD_NUMBER
+- gcloud docker -- push eu.gcr.io/code-and-play/$SERVICE_NAME-$TRAVIS_BRANCH:$TRAVIS_BUILD_NUMBER
 
 #before_cache:
 
 #after_success:
 
 #before_deploy:
-# maybe render k8s deployment files
+#- ./prepare_deployment_files.sh
 
 #deploy:
 #  provider: script
