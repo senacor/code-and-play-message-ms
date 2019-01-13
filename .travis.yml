@@ -1,5 +1,9 @@
 language: java
 
+env:
+- SERVICE_NAME=message-ms
+- DOCKER_IMAGE_NAME=$SERVICE_NAME-$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER
+
 cache:
   directories:
   - "$HOME/google-cloud-sdk/"
@@ -9,7 +13,6 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_4cd52d8a0d11_key -iv $encrypted_4cd52d8a0d11_iv -in client-secret.json.enc -out client-secret.json -d
 - gcloud version || true
 - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
-# Add gcloud to $PATH
 - source $HOME/google-cloud-sdk/path.bash.inc
 - gcloud version
 - gcloud components update kubectl
@@ -17,12 +20,29 @@ before_install:
 - gcloud config set project code-and-play
 - gcloud config set compute/zone europe-west3-c
 - gcloud container clusters get-credentials cap
-- kubectl get ns
+
+
+# install stage is used to build the app and run unit tests
+#install:
+# -  ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+# -  ./mvnw test -B
+
 
 #before_script:
-#- ./scripts/image-prepare.sh $FULL_IMAGE_NAME
-#- ./scripts/image-push.sh $FULL_IMAGE_NAME
 
-#script:
-#- ./scripts/gcloud-select-cluster.sh $CLUSTER_NAME
-#- ./scripts/k8s-run-mysql.sh ''
+# build and push the docker image
+script:
+- docker build --no-cache=true -t $DOCKER_IMAGE_NAME .
+- gcloud docker -- push /cap/$SERVICE_NAME/$DOCKER_IMAGE_NAME
+
+#before_cache:
+
+#after_success:
+
+#before_deploy:
+# maybe render k8s deployment files
+
+#deploy:
+#  provider: script
+#  script: kubectl apply -f ...
+
