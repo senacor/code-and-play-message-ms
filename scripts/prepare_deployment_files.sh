@@ -7,5 +7,5 @@ mkdir -p ./target/kubernetes/
 for file in ./deployment/*.yaml
 do
   filename=$(basename "$file")
-  envsubst < "$f" > "./target/kubernetes/$filename"
+  envsubst < "$file" > "./target/kubernetes/$filename"
 done
