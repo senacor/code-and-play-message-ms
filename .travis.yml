@@ -3,7 +3,6 @@ language: java
 env:
   global:
   - SERVICE_NAME=message-ms
-  - DOCKER_IMAGE_NAME=$SERVICE_NAME-$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER
 
 cache:
   directories:
@@ -33,8 +32,8 @@ before_install:
 
 # build and push the docker image
 script:
-- docker build --no-cache=true -t $DOCKER_IMAGE_NAME .
-- gcloud docker -- push /cap/$SERVICE_NAME/$DOCKER_IMAGE_NAME
+- docker build --no-cache=true -t $SERVICE_NAME-$TRAVIS_BRANCH:$TRAVIS_BUILD_NUMBER .
+- gcloud docker -- push $SERVICE_NAME:$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER
 
 #before_cache:
 

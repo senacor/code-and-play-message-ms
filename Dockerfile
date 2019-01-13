@@ -2,20 +2,13 @@ FROM openjdk:8-jdk-alpine
 
 VOLUME /tmp
 
-ARG DEPENDENCY=target/dependency
-
-RUN addgroup -S app \
-  && adduser -S -G app app \
+RUN addgroup -g 1000 -S app \
+  && adduser -u 1000 -S -G app app
 
 USER app
 
-COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
-COPY ${DEPENDENCY}/META-INF /app/META-INF
-COPY ${DEPENDENCY}/BOOT-INF/classes /app
+COPY target/*.jar app.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java",
-  "-cp",
-  "app:app/lib/*",
-  "com.senacor.cap.service.message.Application"]
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom","-jar", "/app.jar"]
