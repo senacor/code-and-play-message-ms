@@ -15,7 +15,7 @@ before_install:
 - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
 - source $HOME/google-cloud-sdk/path.bash.inc
 - gcloud version
-- gcloud components update kubectl
+- gcloud components install kubectl
 - gcloud auth activate-service-account --key-file client-secret.json
 - gcloud config set project code-and-play
 - gcloud config set compute/zone europe-west3-c
