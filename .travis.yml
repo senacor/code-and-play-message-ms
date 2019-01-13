@@ -41,5 +41,6 @@ before_deploy:
 
 # deploy to cluster
 deploy:
+  skip_cleanup: true
   provider: script
   script: kubectl apply -f ./target/kubernetes/
