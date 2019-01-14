@@ -32,7 +32,7 @@ class Application {
             val port = env.getProperty("server.port")
             val channel = env.getProperty("SERVICE_CHANNEL")
 
-            log.info("Registering channel $channel with")
+            log.info("Registering channel $channel with endpoint $host:$port")
             log.debug("Host address is $host:$port")
 
             sb.append("{")
