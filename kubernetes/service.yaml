@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ${SERVICE_NAME}
+  name: ${SERVICE_NAME}-${TRAVIS_BRANCH}
   #namespace: services
   labels:
-    app: ${SERVICE_NAME}
+    app: ${SERVICE_NAME}-${TRAVIS_BRANCH}
     channel: ${TRAVIS_BRANCH}
 spec:
   selector:
-    app: ${SERVICE_NAME}
+    app: ${SERVICE_NAME}-${TRAVIS_BRANCH}
     channel: ${TRAVIS_BRANCH}
   ports:
   - port: 8080
