@@ -46,7 +46,7 @@ class Application {
 
             val request = HttpEntity(sb.toString(), headers)
 
-            restTemplate.postForObject<String>("http://localhost:8080/api/channels", request)
+            restTemplate.postForObject<String>("http://channel-ms:8080/api/channels", request)
         }
     }
 
