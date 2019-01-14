@@ -5,11 +5,9 @@ metadata:
   #namespace: services
   labels:
     app: "${SERVICE_NAME}"
-    chatChannel: "${TRAVIS_BRANCH}"
 spec:
   selector:
     app: "${SERVICE_NAME}"
-    chatChannel: "${TRAVIS_BRANCH}"
   ports:
   - port: 8080
     targetPort: 8080
