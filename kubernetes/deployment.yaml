@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ${SERVICE_NAME}-${TRAVIS_BRANCH}
+  name: ${SERVICE_NAME}
   #namespace: services
   labels:
     app: "${SERVICE_NAME}"
