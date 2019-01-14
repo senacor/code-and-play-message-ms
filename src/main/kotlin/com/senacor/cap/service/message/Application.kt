@@ -31,6 +31,8 @@ class Application {
             val channel = env.getProperty("SERVICE_CHANNEL")
             val host = env.getProperty("MESSAGE_MS_" + channel!!.toUpperCase() + "_SERVICE_HOST")
             val port = env.getProperty("MESSAGE_MS_" + channel!!.toUpperCase() + "_SERVICE_PORT")
+            val channelMsHost = env.getProperty("CHANNEL_MS_SERVICE_HOST")
+            val channelMsPort = env.getProperty("CHANNEL_MS_SERVICE_PORT")
 
             log.info("Registering channel $channel with endpoint $host:$port")
             log.debug("Host address is $host:$port")
@@ -46,7 +48,7 @@ class Application {
 
             val request = HttpEntity(sb.toString(), headers)
 
-            restTemplate.postForObject<String>("http://channel-ms:8080/api/channels", request)
+            restTemplate.postForObject<String>("http://$channelMsHost:$channelMsPort/api/channels", request)
         }
     }
 
