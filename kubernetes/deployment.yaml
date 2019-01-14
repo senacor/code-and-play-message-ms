@@ -17,7 +17,7 @@ spec:
     metadata:
       #namespace: services
       labels:
-        app: "${SERVICE_NAME}-${TRAVIS_BRANCH}"
+        app: "${SERVICE_NAME}"
         chatChannel: "${TRAVIS_BRANCH}"
         serviceVersion: "${TRAVIS_BRANCH}-${TRAVIS_BUILD_NUMBER}"
     spec:
