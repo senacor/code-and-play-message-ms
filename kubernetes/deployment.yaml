@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ${SERVICE_NAME}
+  name: ${SERVICE_NAME}-${TRAVIS_BRANCH}
   #namespace: services
   labels:
-    app: "${SERVICE_NAME}"
+    app: "${SERVICE_NAME}-${TRAVIS_BRANCH}"
     chatChannel: "${TRAVIS_BRANCH}"
     serviceVersion: "${TRAVIS_BRANCH}-${TRAVIS_BUILD_NUMBER}"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "${SERVICE_NAME}"
+      app: "${SERVICE_NAME}-${TRAVIS_BRANCH}"
       chatChannel: "${TRAVIS_BRANCH}"
   template:
     metadata:
       #namespace: services
       labels:
-        app: "${SERVICE_NAME}"
+        app: "${SERVICE_NAME}-${TRAVIS_BRANCH}"
         chatChannel: "${TRAVIS_BRANCH}"
         serviceVersion: "${TRAVIS_BRANCH}-${TRAVIS_BUILD_NUMBER}"
     spec:
