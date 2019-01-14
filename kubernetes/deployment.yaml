@@ -6,7 +6,7 @@ metadata:
   labels:
     app: ${SERVICE_NAME}
     channel: ${TRAVIS_BRANCH}
-    version: ${TRAVIS_BUILD_NUMBER}
+    version: "${TRAVIS_BUILD_NUMBER}"
 spec:
   replicas: 1
   selector:
@@ -19,7 +19,7 @@ spec:
       labels:
         app: ${SERVICE_NAME}
         channel: ${TRAVIS_BRANCH}
-        version: ${TRAVIS_BUILD_NUMBER}
+        version: "${TRAVIS_BUILD_NUMBER}"
     spec:
       containers:
         - name: ${SERVICE_NAME}
