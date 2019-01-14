@@ -22,7 +22,7 @@ spec:
         serviceVersion: "${TRAVIS_BRANCH}-${TRAVIS_BUILD_NUMBER}"
     spec:
       containers:
-        - name: ${SERVICE_NAME}
+        - name: ${SERVICE_NAME}-${TRAVIS_BRANCH}
           image: eu.gcr.io/code-and-play/${DOCKER_IMAGE}
           imagePullPolicy: IfNotPresent
           env:
