@@ -30,7 +30,7 @@ class Application {
 
             val host = InetAddress.getLocalHost().hostAddress
             val port = env.getProperty("server.port")
-            val channel = env.getProperty("channel")
+            val channel = env.getProperty("SERVICE_CHANNEL")
 
             log.info("Registering channel $channel with")
             log.debug("Host address is $host:$port")
