@@ -28,9 +28,9 @@ class Application {
             val restTemplate = RestTemplate()
             val sb = StringBuilder()
 
-            val host = InetAddress.getLocalHost().hostAddress
-            val port = env.getProperty("SERVICE_PORT")
             val channel = env.getProperty("SERVICE_CHANNEL")
+            val host = env.getProperty("MESSAGE_MS_" + channel!!.toUpperCase() + "SERVICE_HOST")
+            val port = env.getProperty("MESSAGE_MS_" + channel!!.toUpperCase() + "SERVICE_PORT")
 
             log.info("Registering channel $channel with endpoint $host:$port")
             log.debug("Host address is $host:$port")
