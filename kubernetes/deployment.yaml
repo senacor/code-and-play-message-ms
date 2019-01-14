@@ -28,8 +28,10 @@ spec:
           env:
           - name: SERVICE_CHANNEL
             value: ${TRAVIS_BRANCH}
-          - SERVICE_HOST = ${SERVICE_NAME}_SERVICE_HOST
-          - SERVICE_PORT = ${SERVICE_NAME}_SERVICE_PORT
+          - name: SERVICE_HOST
+            value: ${SERVICE_NAME}_SERVICE_HOST
+          - name: SERVICE_PORT
+            value: ${SERVICE_NAME}_SERVICE_PORT
           ports:
           - name: http
             containerPort: 8080
