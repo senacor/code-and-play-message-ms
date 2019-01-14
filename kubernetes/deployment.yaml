@@ -29,9 +29,9 @@ spec:
           - name: SERVICE_CHANNEL
             value: ${TRAVIS_BRANCH}
           - name: SERVICE_HOST
-            value: ${SERVICE_NAME}_SERVICE_HOST
+            value: $MESSAGE_MS_${TRAVIS_BRANCH}_SERVICE_HOST
           - name: SERVICE_PORT
-            value: ${SERVICE_NAME}_SERVICE_PORT
+            value: $MESSAGE_MS_${TRAVIS_BRANCH_SERVICE_PORT
           ports:
           - name: http
             containerPort: 8080
