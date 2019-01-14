@@ -29,8 +29,8 @@ class Application {
             val sb = StringBuilder()
 
             val channel = env.getProperty("SERVICE_CHANNEL")
-            val host = env.getProperty("MESSAGE_MS_" + channel!!.toUpperCase() + "SERVICE_HOST")
-            val port = env.getProperty("MESSAGE_MS_" + channel!!.toUpperCase() + "SERVICE_PORT")
+            val host = env.getProperty("MESSAGE_MS_" + channel!!.toUpperCase() + "_SERVICE_HOST")
+            val port = env.getProperty("MESSAGE_MS_" + channel!!.toUpperCase() + "_SERVICE_PORT")
 
             log.info("Registering channel $channel with endpoint $host:$port")
             log.debug("Host address is $host:$port")
