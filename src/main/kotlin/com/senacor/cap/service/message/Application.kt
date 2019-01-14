@@ -29,7 +29,7 @@ class Application {
             val sb = StringBuilder()
 
             val host = InetAddress.getLocalHost().hostAddress
-            val port = env.getProperty("server.port")
+            val port = env.getProperty("SERVICE_PORT")
             val channel = env.getProperty("SERVICE_CHANNEL")
 
             log.info("Registering channel $channel with endpoint $host:$port")
