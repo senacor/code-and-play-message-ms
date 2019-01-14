@@ -4,22 +4,22 @@ metadata:
   name: ${SERVICE_NAME}
   #namespace: services
   labels:
-    app: ${SERVICE_NAME}-${TRAVIS_BRANCH}
-    channel: ${TRAVIS_BRANCH}
-    version: ${TRAVIS_BRANCH}-${TRAVIS_BUILD_NUMBER}
+    app: "${SERVICE_NAME}-${TRAVIS_BRANCH}"
+    chatChannel: "${TRAVIS_BRANCH}"
+    serviceVersion: "${TRAVIS_BRANCH}-${TRAVIS_BUILD_NUMBER}"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ${SERVICE_NAME}-${TRAVIS_BRANCH}
-      channel: ${TRAVIS_BRANCH}
+      app: "${SERVICE_NAME}-${TRAVIS_BRANCH}"
+      chatChannel: "${TRAVIS_BRANCH}"
   template:
     metadata:
       #namespace: services
       labels:
-        app: ${SERVICE_NAME}-${TRAVIS_BRANCH}
-        channel: ${TRAVIS_BRANCH}
-        version: ${TRAVIS_BRANCH}-${TRAVIS_BUILD_NUMBER}
+        app: "${SERVICE_NAME}-${TRAVIS_BRANCH}"
+        chatChannel: "${TRAVIS_BRANCH}"
+        serviceVersion: "${TRAVIS_BRANCH}-${TRAVIS_BUILD_NUMBER}"
     spec:
       containers:
         - name: ${SERVICE_NAME}

@@ -4,12 +4,12 @@ metadata:
   name: ${SERVICE_NAME}-${TRAVIS_BRANCH}
   #namespace: services
   labels:
-    app: ${SERVICE_NAME}-${TRAVIS_BRANCH}
-    channel: ${TRAVIS_BRANCH}
+    app: "${SERVICE_NAME}-${TRAVIS_BRANCH}"
+    chatChannel: "${TRAVIS_BRANCH}"
 spec:
   selector:
-    app: ${SERVICE_NAME}-${TRAVIS_BRANCH}
-    channel: ${TRAVIS_BRANCH}
+    app: "${SERVICE_NAME}-${TRAVIS_BRANCH}"
+    chatChannel: "${TRAVIS_BRANCH}"
   ports:
   - port: 8080
     targetPort: 8080
