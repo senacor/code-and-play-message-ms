@@ -11,17 +11,21 @@ import org.springframework.core.env.Environment
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
+import org.springframework.scheduling.annotation.EnableScheduling
+import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.client.postForObject
 import java.lang.StringBuilder
 import java.net.InetAddress
 
 @SpringBootApplication
+@EnableScheduling
 class Application {
 
     private val log: Logger = LoggerFactory.getLogger(Application::class.java)
 
     @Bean
+    @Scheduled(fixedDelay = 30000)
     fun registerChannel(env: Environment): CommandLineRunner {
 
         return CommandLineRunner {
@@ -30,7 +34,7 @@ class Application {
 
             val channel = env.getProperty("SERVICE_CHANNEL")
             val host = env.getProperty("MESSAGE_MS_" + channel!!.toUpperCase() + "_SERVICE_HOST")
-            val port = env.getProperty("MESSAGE_MS_" + channel!!.toUpperCase() + "_SERVICE_PORT")
+            val port = env.getProperty("MESSAGE_MS_" + channel.toUpperCase() + "_SERVICE_PORT")
             val channelMsHost = env.getProperty("CHANNEL_MS_SERVICE_HOST")
             val channelMsPort = env.getProperty("CHANNEL_MS_SERVICE_PORT")
 
