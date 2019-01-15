@@ -13,6 +13,6 @@ spec:
         prefix: /api/channels/${TRAVIS_BRANCH}/messages
     route:
     - destination:
-        host: ${SERVICE_NAME}
+        host: ${SERVICE_NAME}-${TRAVIS_BRANCH}
         port:
           number: 8080
