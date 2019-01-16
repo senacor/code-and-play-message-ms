@@ -14,30 +14,22 @@ import org.springframework.web.client.postForObject
 data class Channel(val id: String, val endpoint: String)
 
 @Component
-class HeartbeatUtility(env: Environment) {
+class HeartbeatUtility(val env: Environment) {
     private val log: Logger = LoggerFactory.getLogger(HeartbeatUtility::class.java)
 
     private val restTemplate = RestTemplate()
 
-    private lateinit var channel: String
-    private lateinit var host: String
-    private lateinit var port: String
-    private lateinit var channelMsHost: String
-    private lateinit var channelMsPort: String
-
-    init {
-        channel = env.getProperty("SERVICE_CHANNEL")!!
-        host = env.getProperty("MESSAGE_MS_" + channel.toUpperCase() + "_SERVICE_HOST")!!
-        port = env.getProperty("MESSAGE_MS_" + channel.toUpperCase() + "_SERVICE_PORT")!!
-        channelMsHost = env.getProperty("CHANNEL_MS_SERVICE_HOST")!!
-        channelMsPort = env.getProperty("CHANNEL_MS_SERVICE_PORT")!!
+    @Scheduled(fixedDelay = 30000)
+    fun heartbeat() {
+        val channel = env.getProperty("SERVICE_CHANNEL")
+        val host = env.getProperty("MESSAGE_MS_" + channel!!.toUpperCase() + "_SERVICE_HOST")
+        val port = env.getProperty("MESSAGE_MS_" + channel.toUpperCase() + "_SERVICE_PORT")
+        val channelMsHost = env.getProperty("CHANNEL_MS_SERVICE_HOST")
+        val channelMsPort = env.getProperty("CHANNEL_MS_SERVICE_PORT")
 
         log.info("Registering channel $channel with endpoint $host:$port")
         log.debug("Host address is $host:$port")
-    }
 
-    @Scheduled(fixedDelay = 30000)
-    fun heartbeat() {
         val headers = HttpHeaders()
         headers.contentType = MediaType.APPLICATION_JSON
 
