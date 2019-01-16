@@ -23,9 +23,9 @@ before_install:
 
 
 # install stage is used to build the app and run unit tests
-#install:
-# -  ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-# -  ./mvnw test -B
+install:
+  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+  - ./mvnw test -B
 
 
 script:
