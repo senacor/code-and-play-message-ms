@@ -19,22 +19,31 @@ class HeartbeatUtility(val env: Environment) {
 
     private val restTemplate = RestTemplate()
 
+    private val channel = env.getProperty("SERVICE_CHANNEL")
+
+    init {
+        if (channel == null) {
+            log.error("Could not determine the service channel.")
+        }
+    }
+
     @Scheduled(fixedDelay = 30000)
     fun heartbeat() {
-        val channel = env.getProperty("SERVICE_CHANNEL") ?: "test"
-        val host = env.getProperty("MESSAGE_MS_" + channel.toUpperCase() + "_SERVICE_HOST")
-        val port = env.getProperty("MESSAGE_MS_" + channel.toUpperCase() + "_SERVICE_PORT")
-        val channelMsHost = env.getProperty("CHANNEL_MS_SERVICE_HOST")
-        val channelMsPort = env.getProperty("CHANNEL_MS_SERVICE_PORT")
+        if (channel != null) {
+            val host = env.getProperty("MESSAGE_MS_" + channel.toUpperCase() + "_SERVICE_HOST")
+            val port = env.getProperty("MESSAGE_MS_" + channel.toUpperCase() + "_SERVICE_PORT")
+            val channelMsHost = env.getProperty("CHANNEL_MS_SERVICE_HOST")
+            val channelMsPort = env.getProperty("CHANNEL_MS_SERVICE_PORT")
 
-        log.info("Registering channel $channel with endpoint $host:$port")
-        log.debug("Host address is $host:$port")
+            log.info("Registering channel $channel with endpoint $host:$port")
+            log.debug("Host address is $host:$port")
 
-        val headers = HttpHeaders()
-        headers.contentType = MediaType.APPLICATION_JSON
+            val headers = HttpHeaders()
+            headers.contentType = MediaType.APPLICATION_JSON
 
-        val request = HttpEntity(Channel(channel, "http://$host:$port"), headers)
+            val request = HttpEntity(Channel(channel, "http://$host:$port"), headers)
 
-        restTemplate.postForObject<String>("http://$channelMsHost:$channelMsPort/api/channels", request)
+            restTemplate.postForObject<String>("http://$channelMsHost:$channelMsPort/api/channels", request)
+        }
     }
 }
