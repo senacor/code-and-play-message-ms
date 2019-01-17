@@ -2,4 +2,6 @@
 
 This microservice provides the REST endpoint `/api/channels/{channelId}/messages` to load and save message.
 
-# Tasks
+# Run local
+
+Run the application with active Spring Profile `local`
