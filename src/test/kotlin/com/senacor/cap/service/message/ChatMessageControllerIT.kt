@@ -7,6 +7,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.jpa.domain.AbstractPersistable_.id
 import org.springframework.http.MediaType
 import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.MockMvc
@@ -89,7 +90,7 @@ class ChatMessageControllerIT {
                     // Check if the new message can be found in the database
                     val location = result.response.getHeader("location")
                     val newMessageId = location!!.substring(location.lastIndexOf("/") + 1)
-                    val savedMessage = repository.findById(newMessageId).get()
+                    val savedMessage = repository.findById(newMessageId.toLong()).get()
                     assertEquals("xy@test.de", savedMessage.sender)
                     assertEquals("My first message", savedMessage.message)
                 }
