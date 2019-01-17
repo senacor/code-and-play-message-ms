@@ -17,13 +17,13 @@ class ChatMessageController(private var messageService: ChatMessageService) {
 
     @GetMapping
     fun loadChatMessages(@PathVariable("channelId") channelId: String): List<ChatMessage> {
-        Metrics.messagesGetRequests.count()
+        Metrics.messagesGetRequests.increment()
         return messageService.loadChatMessages(channelId)
     }
 
     @PostMapping
     fun newChatMessages(@PathVariable("channelId") channel: String, @RequestBody chatMessage: ChatMessage): ResponseEntity<Void> {
-        Metrics.messagesPostRequests.count()
+        Metrics.messagesPostRequests.increment()
         val newChatMessage = messageService.saveChatMessage(channel, chatMessage.sender, chatMessage.message)
 
         val location = UriComponentsBuilder.newInstance().path(CHAT_MESSAGES_PATH)

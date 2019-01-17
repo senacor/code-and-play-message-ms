@@ -7,6 +7,9 @@ metadata:
     app: "${SERVICE_NAME}-${TRAVIS_BRANCH}"
     chatChannel: "${TRAVIS_BRANCH}"
     serviceVersion: "${TRAVIS_BRANCH}-${TRAVIS_BUILD_NUMBER}"
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/path: "/prometheus"
 spec:
   replicas: 1
   selector:
