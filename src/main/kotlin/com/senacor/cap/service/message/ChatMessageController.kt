@@ -16,9 +16,9 @@ const val CHAT_MESSAGES_PATH = "/api/channels/{channelId}/messages"
 class ChatMessageController(private var messageService: ChatMessageService) {
 
     @GetMapping
-    fun loadChatMessages(@PathVariable("channelId") channelId: String) {
+    fun loadChatMessages(@PathVariable("channelId") channelId: String): List<ChatMessage> {
         Metrics.messagesGetRequests.count()
-        messageService.loadChatMessages(channelId)
+        return messageService.loadChatMessages(channelId)
     }
 
     @PostMapping
