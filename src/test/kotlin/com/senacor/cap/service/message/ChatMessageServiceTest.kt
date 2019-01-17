@@ -19,7 +19,7 @@ class ChatMessageServiceTest {
             ChatMessage("dev", "s@t.de", "World!")
         )
 
-        every { chatMessageRepository.findAll() } returns expectedList
+        every { chatMessageRepository.findByChannelIdOrderByCreationTimestampDesc("dev") } returns expectedList
 
         val result = service.loadChatMessages("dev")
 
