@@ -16,10 +16,14 @@ const val CHAT_MESSAGES_PATH = "/api/channels/{channelId}/messages"
 class ChatMessageController(private var messageService: ChatMessageService) {
 
     @GetMapping
-    fun loadChatMessages(@PathVariable("channelId") channelId: String) = messageService.loadChatMessages(channelId)
+    fun loadChatMessages(@PathVariable("channelId") channelId: String) {
+        Metrics.messagesGetRequests.count()
+        messageService.loadChatMessages(channelId)
+    }
 
     @PostMapping
     fun newChatMessages(@PathVariable("channelId") channel: String, @RequestBody chatMessage: ChatMessage): ResponseEntity<Void> {
+        Metrics.messagesPostRequests.count()
         val newChatMessage = messageService.saveChatMessage(channel, chatMessage.sender, chatMessage.message)
 
         val location = UriComponentsBuilder.newInstance().path(CHAT_MESSAGES_PATH)
