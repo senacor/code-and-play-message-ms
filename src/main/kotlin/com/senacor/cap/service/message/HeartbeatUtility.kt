@@ -21,8 +21,8 @@ class HeartbeatUtility(val env: Environment) {
 
     @Scheduled(fixedDelay = 30000)
     fun heartbeat() {
-        val channel = env.getProperty("SERVICE_CHANNEL")
-        val host = env.getProperty("MESSAGE_MS_" + channel!!.toUpperCase() + "_SERVICE_HOST")
+        val channel = env.getProperty("SERVICE_CHANNEL") ?: "test"
+        val host = env.getProperty("MESSAGE_MS_" + channel.toUpperCase() + "_SERVICE_HOST")
         val port = env.getProperty("MESSAGE_MS_" + channel.toUpperCase() + "_SERVICE_PORT")
         val channelMsHost = env.getProperty("CHANNEL_MS_SERVICE_HOST")
         val channelMsPort = env.getProperty("CHANNEL_MS_SERVICE_PORT")
