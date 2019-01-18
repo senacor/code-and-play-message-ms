@@ -7,8 +7,6 @@ import java.time.Instant
 class ChatMessageService(val channelService: ChannelService,
         val repository: ChatMessageRepository) {
 
-    fun saveChatMessage(message: ChatMessage) = repository.save(message)
-
     fun saveChatMessage(channel: String, sender: String, message: String): ChatMessage {
         return repository.save(ChatMessage(channel, sender, message, Instant.now()))
     }
