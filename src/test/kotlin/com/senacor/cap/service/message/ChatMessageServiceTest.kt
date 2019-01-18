@@ -12,7 +12,7 @@ class ChatMessageServiceTest {
     fun nothing() {
 
     }
-    /*
+
     private val chatMessageRepository = mockk<ChatMessageRepository>()
 
     private val service = ChatMessageService(channelServiceMock, chatMessageRepository)
@@ -41,5 +41,5 @@ class ChatMessageServiceTest {
 
         service.loadChatMessages("not-a-channel")
     }
-    */
+
 }

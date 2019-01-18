@@ -14,11 +14,7 @@ import java.time.Instant
 @RunWith(SpringRunner::class)
 class ChatMessageRepositoryIT {
 
-    @Test
-    fun nothing() {
-    }
 
-    /*
     @Autowired
     private lateinit var repository: ChatMessageRepository
 
@@ -60,5 +56,5 @@ class ChatMessageRepositoryIT {
 
         assertEquals(3, messages.count())
     }
-    */
+
 }
