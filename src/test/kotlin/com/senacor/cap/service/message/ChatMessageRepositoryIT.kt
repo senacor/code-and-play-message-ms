@@ -14,7 +14,7 @@ import java.time.Instant
 @RunWith(SpringRunner::class)
 class ChatMessageRepositoryIT {
 
-    /*
+
     @Autowired
     private lateinit var repository: ChatMessageRepository
 
@@ -28,6 +28,8 @@ class ChatMessageRepositoryIT {
     fun cleanup() {
         repository.deleteAll()
     }
+
+
 
     @Test
     fun saveAndLoadChatMessages() {
@@ -56,5 +58,10 @@ class ChatMessageRepositoryIT {
 
         assertEquals(3, messages.count())
     }
-    */
+
+
+    @Test
+    fun boostSelfConfidence() {
+    }
+
 }
