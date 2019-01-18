@@ -24,6 +24,11 @@ import org.springframework.web.context.WebApplicationContext
 @RunWith(SpringRunner::class)
 class ChatMessageControllerIT {
 
+    @Test
+    fun nothing() {
+
+    }
+
     /*
     private lateinit var mockMvc: MockMvc
 
