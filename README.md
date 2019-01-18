@@ -131,10 +131,15 @@ der euren Service aufruft.
  
 Verwende den Unit-Test `ChatMessageControllerTest` und den Integrations-Test `ChatMessageControllerIT`
 
-### 3.5 (Bonus-Aufgabe) Löschen von Nachrichten
+### 3 (Bonus-Aufgabe1) Löschen von Nachrichten
 
 Implementiere das Löschen von Nachrichten. Dazu muss die REST API erweitert werden, so das auch DELETE unterstützt wird.
 Ein Request auf `DELETE /api/channels/{channelId}/messages/{messageId}` soll die Nachricht aus der Datenbank löschen.
+
+### 3 (Bonus-Aufgabe 2) CI/CD Pipeline verstehen
+
+Wie kommen deine Änderungen am Service auf unseren Cluster?
+Schau dir die Datei [.travis.yml](./.travis.yml) an und versuche zu verstehen, wie das Build und das Deployment des Services funktioniert.
 
 ## 4 GKE, Kubernetes, Istio
 
