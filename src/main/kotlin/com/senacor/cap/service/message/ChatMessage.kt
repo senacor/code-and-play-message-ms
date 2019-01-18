@@ -9,7 +9,7 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class ChatMessage(var channel: String, val sender: String, val message: String, val creationTimestamp: Instant?) {
+data class ChatMessage(var channel: String?, val sender: String, val message: String, val creationTimestamp: Instant?) {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
