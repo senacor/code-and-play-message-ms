@@ -9,7 +9,7 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class ChatMessage(var channel: String, val sender: String, val message: String, val time: Instant?) {
+data class ChatMessage(var channel: String, val sender: String, val message: String, val creationTimestamp: Instant?) {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,8 +26,8 @@ data class ChatMessage(var channel: String, val sender: String, val message: Str
 
     override fun equals(other: Any?): Boolean {
         if (other != null && other is ChatMessage) {
-            val ldtOther = LocalDateTime.ofInstant(other.time, ZoneOffset.UTC)
-            val ldtThis = LocalDateTime.ofInstant(this.time, ZoneOffset.UTC)
+            val ldtOther = LocalDateTime.ofInstant(other.creationTimestamp, ZoneOffset.UTC)
+            val ldtThis = LocalDateTime.ofInstant(this.creationTimestamp, ZoneOffset.UTC)
             return other.channel.equals(this.channel) && other.sender.equals(this.sender)
                     && other.message.equals(this.message) && ldtOther.year.equals(ldtThis.year)
                     && ldtOther.month.equals(ldtThis.month)

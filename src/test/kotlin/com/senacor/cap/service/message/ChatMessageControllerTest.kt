@@ -38,7 +38,7 @@ class ChatMessageControllerTest {
         val savedMessage = ChatMessage("dev", "sender@test.de", "Hello World!", id = 123)
         every { serviceMock.saveChatMessage(any()) } returns savedMessage
 
-        val result = controller.newChatMessage(ChatMessage("dev", "sender@test.de", "Hello World!"))
+        val result = controller.newChatMessage(ChatMessage("dev", "sender@test.de", "Hello World!"), "dev")
 
         assertEquals(HttpStatus.CREATED, result.statusCode)
         assertEquals(URI("/api/channels/dev/messages/123"), result.headers.location)

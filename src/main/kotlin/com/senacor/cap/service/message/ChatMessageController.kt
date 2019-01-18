@@ -7,8 +7,9 @@ import java.net.URI
 @RestController
 class ChatMessageController(var service: ChatMessageService) {
 
-    @PostMapping(value = ["/api/messages"])
-    fun newChatMessage(@RequestBody chatMessage: ChatMessage): ResponseEntity<URI> {
+    @PostMapping(value = ["/api/channels/{channelId}/messages"])
+    fun newChatMessage(@RequestBody chatMessage: ChatMessage, @PathVariable channelId: String): ResponseEntity<URI> {
+        chatMessage.channel = channelId
         val result = service.saveChatMessage(chatMessage)
         return ResponseEntity.created(URI.create("/api/channels/" + chatMessage.channel + "/messages/" + result.getId())).build()
     }

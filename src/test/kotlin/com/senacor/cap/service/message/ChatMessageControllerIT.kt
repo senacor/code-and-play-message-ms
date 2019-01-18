@@ -78,7 +78,7 @@ class ChatMessageControllerIT {
 
         println(newMessage)
 
-        mockMvc.perform(post("/api/messages")
+        mockMvc.perform(post("/api/channels/{channelId}/messages", channel)
                 .content(objectMapper.writeValueAsString(newMessage))
                 .contentType(MediaType.parseMediaType("application/json;charset=UTF-8"))
                 .accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
