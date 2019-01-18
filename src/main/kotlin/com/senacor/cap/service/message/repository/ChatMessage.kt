@@ -10,7 +10,7 @@ import javax.persistence.Id
  * Created by tali on 18.01.19.
  */
 @Entity
-data class ChatMessage(var channelId: String,
+data class ChatMessage(var channelId: String? = "",
                        var sender: String,
                        var message: String,
                        var creationTimestamp: Instant = Instant.now(),
