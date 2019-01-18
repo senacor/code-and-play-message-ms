@@ -14,6 +14,9 @@ import java.time.Instant
 @RunWith(SpringRunner::class)
 class ChatMessageRepositoryIT {
 
+    @Test
+    fun test() {}
+
     /*
     @Autowired
     private lateinit var repository: ChatMessageRepository
