@@ -18,7 +18,7 @@ class ChatMessageController(private val serviceMock: ChatMessageService) {
     @PostMapping("/api/channels/{channelID}/messages")
     fun newChatMessages(@PathVariable("channelID")channelID: String, @RequestBody chatMessage: ChatMessage): ResponseEntity<ChatMessage> {
         val headers = HttpHeaders()
-        val saved: ChatMessage = serviceMock.saveChatMessage(channelID, chatMessage.sender, chatMessage.message)
+        val saved: ChatMessage = serviceMock.saveChatMessage(channelID, chatMessage.sender!!, chatMessage.message!!)
         headers.set(HttpHeaders.LOCATION, "/api/channels/${saved.channelId}/messages/${saved.id}")
         return ResponseEntity(saved, headers,HttpStatus.CREATED)
 

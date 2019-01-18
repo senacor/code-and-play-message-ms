@@ -11,9 +11,9 @@ import javax.persistence.Id
 
 data class ChatMessage(
 
-        var channelId: String,
-        var sender: String,
-        var message: String,
+        var channelId: String?,
+        var sender: String?,
+        var message: String?,
         var creationTimestamp: Instant = Instant.now(),
         @Id
         @GeneratedValue
