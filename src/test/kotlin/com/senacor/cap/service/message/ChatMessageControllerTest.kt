@@ -32,11 +32,11 @@ class ChatMessageControllerTest {
 
     @Test
     @Throws(URISyntaxException::class)
-    fun newChatMessagesTest() {
+    fun newChatMessageTest() {
         val savedMessage = ChatMessage("dev", "sender@test.de", "Hello World!", id = 123)
         every { serviceMock.saveChatMessage(any(), any(), any()) } returns savedMessage
 
-        val result = controller.newChatMessages("dev", ChatMessage("dev", "sender@test.de", "Hello World!"))
+        val result = controller.newChatMessage("dev", ChatMessage("dev", "sender@test.de", "Hello World!"))
 
         assertEquals(HttpStatus.CREATED, result. statusCode)
         assertEquals(URI("/api/channels/dev/messages/123"), result.headers.location)
