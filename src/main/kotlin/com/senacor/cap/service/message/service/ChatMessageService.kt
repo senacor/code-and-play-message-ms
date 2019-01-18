@@ -20,7 +20,7 @@ class ChatMessageService(val channelService: ChannelService,
         }
     }
 
-    fun saveChatMessage(channelId: String,
+    fun saveChatMessage(channelId: String?,
                         sender: String,
                         message: String): ChatMessage {
         return chatMessageRepository.save(ChatMessage(channelId, sender, message))
