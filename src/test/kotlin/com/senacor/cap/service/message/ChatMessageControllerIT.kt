@@ -24,7 +24,7 @@ import org.springframework.web.context.WebApplicationContext
 @RunWith(SpringRunner::class)
 class ChatMessageControllerIT {
 
-    /*
+
     private lateinit var mockMvc: MockMvc
 
     @Autowired
@@ -39,6 +39,7 @@ class ChatMessageControllerIT {
     @Before
     fun setup() {
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).build()
+        repository.deleteAll()
     }
 
     @Test
@@ -96,5 +97,5 @@ class ChatMessageControllerIT {
                     assertEquals("My first message", savedMessage.message)
                 }
     }
-    */
+
 }

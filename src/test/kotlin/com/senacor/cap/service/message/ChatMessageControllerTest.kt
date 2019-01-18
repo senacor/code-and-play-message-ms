@@ -5,13 +5,16 @@ import io.mockk.mockk
 import io.mockk.verify
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import org.junit.runner.RunWith
 import org.springframework.http.HttpStatus
+import org.springframework.test.context.junit4.SpringRunner
 import java.net.URI
 import java.net.URISyntaxException
 
+@RunWith(SpringRunner::class)
 class ChatMessageControllerTest {
 
-    /*
+
     private var serviceMock = mockk<ChatMessageService>()
 
     private var controller = ChatMessageController(serviceMock)
@@ -38,9 +41,9 @@ class ChatMessageControllerTest {
 
         val result = controller.newChatMessages("dev", ChatMessage("dev", "sender@test.de", "Hello World!"))
 
-        assertEquals(HttpStatus.CREATED, result. statusCode)
+        assertEquals(HttpStatus.CREATED, result.statusCode)
         assertEquals(URI("/api/channels/dev/messages/123"), result.headers.location)
         verify { serviceMock.saveChatMessage("dev", "sender@test.de", "Hello World!") }
     }
-    */
+
 }

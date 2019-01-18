@@ -4,10 +4,13 @@ import io.mockk.every
 import io.mockk.mockk
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.springframework.test.context.junit4.SpringRunner
+import java.time.Instant
 
+@RunWith(SpringRunner::class)
 class ChatMessageServiceTest {
     private val channelServiceMock = mockk<ChannelService>()
-    /*
     private val chatMessageRepository = mockk<ChatMessageRepository>()
 
     private val service = ChatMessageService(channelServiceMock, chatMessageRepository)
@@ -36,5 +39,5 @@ class ChatMessageServiceTest {
 
         service.loadChatMessages("not-a-channel")
     }
-    */
+
 }
