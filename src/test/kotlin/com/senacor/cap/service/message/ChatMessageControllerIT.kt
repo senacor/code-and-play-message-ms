@@ -24,7 +24,6 @@ import org.springframework.web.context.WebApplicationContext
 @RunWith(SpringRunner::class)
 class ChatMessageControllerIT {
 
-    /*
     private lateinit var mockMvc: MockMvc
 
     @Autowired
@@ -96,5 +95,4 @@ class ChatMessageControllerIT {
                     assertEquals("My first message", savedMessage.message)
                 }
     }
-    */
 }

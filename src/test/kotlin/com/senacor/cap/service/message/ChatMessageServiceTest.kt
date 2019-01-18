@@ -4,10 +4,12 @@ import io.mockk.every
 import io.mockk.mockk
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import java.time.Instant
 
 class ChatMessageServiceTest {
+
     private val channelServiceMock = mockk<ChannelService>()
-    /*
+
     private val chatMessageRepository = mockk<ChatMessageRepository>()
 
     private val service = ChatMessageService(channelServiceMock, chatMessageRepository)
@@ -16,8 +18,8 @@ class ChatMessageServiceTest {
     fun fetchChatMessages() {
         every { channelServiceMock.existsChannel("dev") } returns true
         val expectedList = listOf(
-            ChatMessage("dev", "s@t.de", "Hello"),
-            ChatMessage("dev", "s@t.de", "World!")
+            ChatMessage("dev", "s@t.de", "Hello", Instant.now()),
+            ChatMessage("dev", "s@t.de", "World!", Instant.now())
         )
 
         every { chatMessageRepository.findByChannelIdOrderByCreationTimestampDesc("dev") } returns expectedList
@@ -29,12 +31,11 @@ class ChatMessageServiceTest {
         assertEquals("World!", result[1].message)
     }
 
-    @Test(expected = ChannelNotFoundException::class)
-    @Throws(ChannelNotFoundException::class)
-    fun loadChatMessagesThrowsExceptionIfChannelNotExist() {
-        every { channelServiceMock.existsChannel("not-a-channel") } returns false
-
-        service.loadChatMessages("not-a-channel")
-    }
-    */
+//    @Test(expected = ChannelNotFoundException::class)
+//    @Throws(ChannelNotFoundException::class)
+//    fun loadChatMessagesThrowsExceptionIfChannelNotExist() {
+//        every { channelServiceMock.existsChannel("not-a-channel") } returns false
+//
+//        service.loadChatMessages("not-a-channel")
+//    }
 }

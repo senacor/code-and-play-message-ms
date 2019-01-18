@@ -14,7 +14,7 @@ import java.time.Instant
 @RunWith(SpringRunner::class)
 class ChatMessageRepositoryIT {
 
-    /*
+
     @Autowired
     private lateinit var repository: ChatMessageRepository
 
@@ -48,13 +48,12 @@ class ChatMessageRepositoryIT {
     @Test
     fun saveAndLoadThreeMessages() {
         assertTrue(repository.findAll().count() == 0)
-        repository.save(ChatMessage("general", "sender@test.de", "let's"))
-        repository.save(ChatMessage("general", "sender@test.de", "test"))
-        repository.save(ChatMessage("general", "sender@test.de", "mongo"))
+        repository.save(ChatMessage("general", "sender@test.de", "let's", Instant.now()))
+        repository.save(ChatMessage("general", "sender@test.de", "test", Instant.now()))
+        repository.save(ChatMessage("general", "sender@test.de", "mongo", Instant.now()))
 
         val messages = repository.findAll()
 
         assertEquals(3, messages.count())
     }
-    */
 }

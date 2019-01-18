@@ -8,10 +8,10 @@ import org.junit.Test
 import org.springframework.http.HttpStatus
 import java.net.URI
 import java.net.URISyntaxException
+import java.time.Instant
 
 class ChatMessageControllerTest {
 
-    /*
     private var serviceMock = mockk<ChatMessageService>()
 
     private var controller = ChatMessageController(serviceMock)
@@ -19,8 +19,8 @@ class ChatMessageControllerTest {
     @Test
     fun loadChannelMessages() {
         val expected = listOf(
-            ChatMessage("dev", "s1", "m1"),
-            ChatMessage("dev", "s2", "m2")
+            ChatMessage("dev", "s1", "m1", Instant.now()),
+            ChatMessage("dev", "s2", "m2", Instant.now())
         )
         every { serviceMock.loadChatMessages("dev") } returns expected
 
@@ -33,14 +33,13 @@ class ChatMessageControllerTest {
     @Test
     @Throws(URISyntaxException::class)
     fun newChatMessagesTest() {
-        val savedMessage = ChatMessage("dev", "sender@test.de", "Hello World!", id = 123)
+        val savedMessage = ChatMessage("dev", "sender@test.de", "Hello World!", Instant.now(), id = 123)
         every { serviceMock.saveChatMessage(any(), any(), any()) } returns savedMessage
 
-        val result = controller.newChatMessages("dev", ChatMessage("dev", "sender@test.de", "Hello World!"))
+        val result = controller.newChatMessages("dev", ChatMessage("dev", "sender@test.de", "Hello World!", Instant.now()))
 
         assertEquals(HttpStatus.CREATED, result. statusCode)
         assertEquals(URI("/api/channels/dev/messages/123"), result.headers.location)
         verify { serviceMock.saveChatMessage("dev", "sender@test.de", "Hello World!") }
     }
-    */
 }
