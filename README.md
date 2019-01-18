@@ -56,6 +56,11 @@ git checkout -b <branch>
 git push
 ```
 
+Sobald der Branch gepushed ist baut Travis-CI den Branch und deployed den Services ins Cluster.
+Travis-CI: https://travis-ci.org/senacor/code-and-play-message-ms/branches
+
+Im Chat-Frontend sollte daraufhin ein Channel mit dem Namen des Branches auftauchen.
+Frontend-Url: http://35.242.204.241/frontend/
 
 ## 2 Kotlin Basics
 
