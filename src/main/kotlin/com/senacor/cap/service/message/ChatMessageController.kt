@@ -1,21 +1,25 @@
 package com.senacor.cap.service.message
 
+import org.aspectj.weaver.tools.cache.SimpleCacheFactory.path
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.util.MultiValueMap
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
+import javax.websocket.server.PathParam
 
 @RestController
 class ChatMessageController(private val serviceMock: ChatMessageService) {
-    fun loadChatMessages(channelID: String): List<ChatMessage> {
+    @GetMapping("/api/channels/{channelID}/messages")
+    fun loadChatMessages(@PathVariable("channelID") channelID: String): List<ChatMessage> {
         return serviceMock.loadChatMessages(channelID)
     }
 
-    fun newChatMessages(channelID: String, chatMessage: ChatMessage): ResponseEntity<ChatMessage> {
-        val headers: HttpHeaders = HttpHeaders()
+    @PostMapping("/api/channels/{channelID}/messages")
+    fun newChatMessages(@PathVariable("channelID")channelID: String, @RequestBody chatMessage: ChatMessage): ResponseEntity<ChatMessage> {
+        val headers = HttpHeaders()
         val saved: ChatMessage = serviceMock.saveChatMessage(channelID, chatMessage.sender, chatMessage.message)
-        headers.set(HttpHeaders.LOCATION, "/api/channels/dev/messages/${saved.id}")
+        headers.set(HttpHeaders.LOCATION, "/api/channels/${saved.channelId}/messages/${saved.id}")
         return ResponseEntity(saved, headers,HttpStatus.CREATED)
 
     }
