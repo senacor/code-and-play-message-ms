@@ -74,7 +74,7 @@ besser gefällt. Ihr könnt euch die Syntax auf der [Kotlin Seite anschauen](htt
 
 ## 3 Implementierung
 
-In den nächsten Schritten sollt ihr nun den Service implementieren. Oftmals wird 
+In den nächsten Schritten sollt ihr nun den Service implementieren. Oftmals wird
 bei Controllern angefangen (top-down), wir wollen jedoch mit dem Data Access Layer 
 beginnen, also bottom-up.
 
