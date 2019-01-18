@@ -14,7 +14,8 @@ class ChatMessageController(val service: ChatMessageService) {
     }
 
     @PostMapping("/api/channels/{channelId}/messages")
-    fun newChatMessages(@PathVariable("channelId") channelId: String, message: ChatMessage): ResponseEntity<ChatMessage> {
+    fun newChatMessages(@PathVariable("channelId") channelId: String, @RequestBody message: ChatMessage): ResponseEntity<ChatMessage> {
+        message.channelId = channelId
         val msg =  service.saveChatMessage(channelId, message.sender, message.message)
         return ResponseEntity.created(URI("/api/channels/$channelId/messages/${msg.id}")).body(msg)
     }
