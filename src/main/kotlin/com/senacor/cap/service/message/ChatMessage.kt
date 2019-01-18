@@ -7,7 +7,7 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class ChatMessage(var channelId: String? = null,
+data class ChatMessage(var channelId: String? = "",
                        var sender: String,
                        var message: String,
                        val creationTimestamp: Instant = Instant.now(),
