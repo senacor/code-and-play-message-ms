@@ -131,6 +131,10 @@ der euren Service aufruft.
  
 Verwende den Unit-Test `ChatMessageControllerTest` und den Integrations-Test `ChatMessageControllerIT`
 
+### 3.5 (Bonus-Aufgabe) Löschen von Nachrichten
+
+Implementiere das Löschen von Nachrichten. Dazu muss die REST API erweitert werden, so das auch DELETE unterstützt wird.
+Ein Request auf `DELETE /api/channels/{channelId}/messages/{messageId}` soll die Nachricht aus der Datenbank löschen.
 
 ## 4 GKE, Kubernetes, Istio
 
