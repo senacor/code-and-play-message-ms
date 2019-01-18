@@ -7,16 +7,12 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.data.jpa.domain.AbstractPersistable_.id
 import org.springframework.http.MediaType
 import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers.header
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
 
@@ -24,7 +20,6 @@ import org.springframework.web.context.WebApplicationContext
 @RunWith(SpringRunner::class)
 class ChatMessageControllerIT {
 
-    /*
     private lateinit var mockMvc: MockMvc
 
     @Autowired
@@ -70,7 +65,7 @@ class ChatMessageControllerIT {
     @Test
     fun loadMessagesForNotExistingChannel() {
         val channel = "not-a-channel"
-        mockMvc.perform(get("/api/{channel}/messages", channel)
+        mockMvc.perform(get("/api/channels/{channel}/messages", channel)
                 .accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
                 .andExpect(status().isNotFound)
     }
@@ -81,12 +76,14 @@ class ChatMessageControllerIT {
         val channel = "dev"
         val newMessage = ChatMessage(channel, "xy@test.de", "My first message")
 
-        mockMvc.perform(post("/api/channels/{channel}/messages", channel)
+        println(newMessage)
+
+        mockMvc.perform(post("/api/messages")
                 .content(objectMapper.writeValueAsString(newMessage))
                 .contentType(MediaType.parseMediaType("application/json;charset=UTF-8"))
                 .accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
                 .andExpect(status().isCreated)
-                .andExpect(header().string("location", startsWith("/api/channels/dev/messages/")))
+                .andExpect(header().string("location", startsWith("/api/channels/" + channel + "/messages/")))
                 .andDo { result ->
                     // Check if the new message can be found in the database
                     val location = result.response.getHeader("location")
@@ -96,5 +93,5 @@ class ChatMessageControllerIT {
                     assertEquals("My first message", savedMessage.message)
                 }
     }
-    */
+
 }

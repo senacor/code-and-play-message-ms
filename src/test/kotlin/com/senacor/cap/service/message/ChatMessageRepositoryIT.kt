@@ -14,7 +14,6 @@ import java.time.Instant
 @RunWith(SpringRunner::class)
 class ChatMessageRepositoryIT {
 
-    /*
     @Autowired
     private lateinit var repository: ChatMessageRepository
 
@@ -42,6 +41,7 @@ class ChatMessageRepositoryIT {
         val messageTwo = repository.save(ChatMessage("dev", "sender@test.de", "World!", timeTwo))
 
         val result = repository.findAll()
+
         assertEquals(listOf(messageOne, messageTwo), result)
     }
 
@@ -56,5 +56,5 @@ class ChatMessageRepositoryIT {
 
         assertEquals(3, messages.count())
     }
-    */
+
 }
