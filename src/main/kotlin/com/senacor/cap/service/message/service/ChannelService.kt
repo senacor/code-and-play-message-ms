@@ -1,4 +1,4 @@
-package com.senacor.cap.service.message
+package com.senacor.cap.service.message.service
 
 import org.springframework.stereotype.Service
 

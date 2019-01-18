@@ -30,8 +30,8 @@ class HeartbeatUtility(val env: Environment) {
     @Scheduled(fixedDelay = 30000)
     fun heartbeat() {
         if (channel != null) {
-            val host = env.getProperty("MESSAGE_MS_" + channel.toUpperCase() + "_SERVICE_HOST")
-            val port = env.getProperty("MESSAGE_MS_" + channel.toUpperCase() + "_SERVICE_PORT")
+            val host = env.getProperty("MESSAGE_MS_" + channel!!.toUpperCase() + "_SERVICE_HOST")
+            val port = env.getProperty("MESSAGE_MS_" + channel!!.toUpperCase() + "_SERVICE_PORT")
             val channelMsHost = env.getProperty("CHANNEL_MS_SERVICE_HOST")
             val channelMsPort = env.getProperty("CHANNEL_MS_SERVICE_PORT")
 
@@ -41,7 +41,7 @@ class HeartbeatUtility(val env: Environment) {
             val headers = HttpHeaders()
             headers.contentType = MediaType.APPLICATION_JSON
 
-            val request = HttpEntity(Channel(channel, "http://$host:$port"), headers)
+            val request = HttpEntity(Channel(channel!!, "http://$host:$port"), headers)
 
             restTemplate.postForObject<String>("http://$channelMsHost:$channelMsPort/api/channels", request)
         }

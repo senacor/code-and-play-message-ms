@@ -1,13 +1,16 @@
 package com.senacor.cap.service.message
 
+import com.senacor.cap.service.message.repository.ChatMessage
+import com.senacor.cap.service.message.repository.ChatMessageRepository
+import com.senacor.cap.service.message.service.ChannelService
+import com.senacor.cap.service.message.service.ChatMessageService
 import io.mockk.every
 import io.mockk.mockk
-import org.junit.Assert.assertEquals
+import junit.framework.Assert.assertEquals
 import org.junit.Test
 
 class ChatMessageServiceTest {
     private val channelServiceMock = mockk<ChannelService>()
-    /*
     private val chatMessageRepository = mockk<ChatMessageRepository>()
 
     private val service = ChatMessageService(channelServiceMock, chatMessageRepository)
@@ -36,5 +39,4 @@ class ChatMessageServiceTest {
 
         service.loadChatMessages("not-a-channel")
     }
-    */
 }

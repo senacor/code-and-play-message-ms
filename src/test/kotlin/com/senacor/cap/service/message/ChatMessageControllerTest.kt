@@ -1,5 +1,8 @@
 package com.senacor.cap.service.message
 
+import com.senacor.cap.service.message.api.ChatMessageController
+import com.senacor.cap.service.message.repository.ChatMessage
+import com.senacor.cap.service.message.service.ChatMessageService
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
@@ -10,8 +13,6 @@ import java.net.URI
 import java.net.URISyntaxException
 
 class ChatMessageControllerTest {
-
-    /*
     private var serviceMock = mockk<ChatMessageService>()
 
     private var controller = ChatMessageController(serviceMock)
@@ -30,6 +31,7 @@ class ChatMessageControllerTest {
         verify { serviceMock.loadChatMessages("dev") }
     }
 
+
     @Test
     @Throws(URISyntaxException::class)
     fun newChatMessagesTest() {
@@ -42,5 +44,5 @@ class ChatMessageControllerTest {
         assertEquals(URI("/api/channels/dev/messages/123"), result.headers.location)
         verify { serviceMock.saveChatMessage("dev", "sender@test.de", "Hello World!") }
     }
-    */
+
 }

@@ -1,6 +1,8 @@
 package com.senacor.cap.service.message
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.senacor.cap.service.message.repository.ChatMessage
+import com.senacor.cap.service.message.repository.ChatMessageRepository
 import org.hamcrest.CoreMatchers.startsWith
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -24,7 +26,6 @@ import org.springframework.web.context.WebApplicationContext
 @RunWith(SpringRunner::class)
 class ChatMessageControllerIT {
 
-    /*
     private lateinit var mockMvc: MockMvc
 
     @Autowired
@@ -96,5 +97,4 @@ class ChatMessageControllerIT {
                     assertEquals("My first message", savedMessage.message)
                 }
     }
-    */
 }
