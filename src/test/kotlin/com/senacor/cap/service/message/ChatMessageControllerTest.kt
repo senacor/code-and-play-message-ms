@@ -11,6 +11,11 @@ import java.net.URISyntaxException
 
 class ChatMessageControllerTest {
 
+    @Test
+    fun nothing() {
+
+    }
+
     /*
     private var serviceMock = mockk<ChatMessageService>()
 

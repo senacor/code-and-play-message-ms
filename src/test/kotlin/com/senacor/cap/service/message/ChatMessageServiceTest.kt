@@ -7,6 +7,11 @@ import org.junit.Test
 
 class ChatMessageServiceTest {
     private val channelServiceMock = mockk<ChannelService>()
+
+    @Test
+    fun nothing() {
+
+    }
     /*
     private val chatMessageRepository = mockk<ChatMessageRepository>()
 
