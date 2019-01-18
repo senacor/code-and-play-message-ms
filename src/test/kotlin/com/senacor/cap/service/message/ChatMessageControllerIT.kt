@@ -42,6 +42,11 @@ class ChatMessageControllerIT {
     }
 
     @Test
+    fun emptyFun(){
+
+    }
+
+    @Test
     fun loadMessages_channelGeneral() {
         val channelId = "general"
         repository.save(ChatMessage(channelId, "max@test.de", "Hello"))
