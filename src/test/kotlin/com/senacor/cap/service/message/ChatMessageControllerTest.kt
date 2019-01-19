@@ -14,6 +14,8 @@ class ChatMessageControllerTest {
 
     private var serviceMock = mockk<ChatMessageService>()
 
+   // private var metricMock = mockk<com.senacor.cap.service.message.Metrics>()
+
     private var controller = ChatMessageController(serviceMock)
 
     @Test

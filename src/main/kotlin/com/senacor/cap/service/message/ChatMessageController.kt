@@ -1,15 +1,14 @@
 package com.senacor.cap.service.message
 
-import org.aspectj.weaver.tools.cache.SimpleCacheFactory.path
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.util.MultiValueMap
 import org.springframework.web.bind.annotation.*
-import javax.websocket.server.PathParam
 
 @RestController
 class ChatMessageController(private val serviceMock: ChatMessageService) {
+
+
     @GetMapping("/api/channels/{channelID}/messages")
     fun loadChatMessages(@PathVariable("channelID") channelID: String): List<ChatMessage> {
         Metrics.apiCallCounterGet.increment()
