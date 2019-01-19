@@ -246,6 +246,12 @@ Die gerenderten Dateien sind im Ordner [target/kubernetes](./target/kubernetes) 
 Mit `kubectl apply -f ./target/kubernetes/deployment.yaml` könnt ihr die geänderte Deployment-Konfiguration deployen.
 
 
+### API Versioning
+
+Änder den Pfad unter dem dein Service zu erreichen is von `/api/channels/${TRAVIS_BRANCH}/messages` auf `/api/v1/channels/${TRAVIS_BRANCH}/messages`.
+
+Dazu musst du Änderungen in [kubernetes/virtualservice.yaml](./kubernetes/virtualservice.yaml) machen.
+
 
 ## Einen eigenen cluster aufsetzen
 
