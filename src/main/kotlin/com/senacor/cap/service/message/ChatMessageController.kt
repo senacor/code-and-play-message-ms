@@ -7,23 +7,6 @@ import java.net.URI
 import java.util.concurrent.atomic.AtomicLong
 
 
-class Greeting(val id: Long, val content: String)
-
-@RestController
-class GreetingController {
-    private val counter = AtomicLong()
-
-    @RequestMapping("/greeting")
-    fun greeting(@RequestParam(value = "name", defaultValue = "World") name: String): Greeting {
-        return Greeting(counter.incrementAndGet(),
-                String.format(template, name))
-    }
-
-    companion object {
-
-        private val template = "Hello, %s!"
-    }
-}
 
 @RestController
 class ChatMessageController (val service: ChatMessageService) {
