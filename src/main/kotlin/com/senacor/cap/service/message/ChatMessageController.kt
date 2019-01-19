@@ -12,11 +12,13 @@ class ChatMessageController(val serviceMock: ChatMessageService) {
 
     @GetMapping("/api/channels/{channelId}/messages")
     fun loadChatMessages(@PathVariable channelId: String): List<ChatMessage> {
+        Metrics.getTotal.increment()
         return serviceMock.loadChatMessages(channelId)
     }
 
     @PostMapping("/api/channels/{channel}/messages")
     fun newChatMessages(@PathVariable channel: String?, @RequestBody chatMessage: ChatMessage): ResponseEntity<ChatMessage> {
+        Metrics.postTotal.increment()
         var saveChatMessage = serviceMock.saveChatMessage(channel, chatMessage.sender, chatMessage.message)
         val id = saveChatMessage.id
         return ResponseEntity.created(URI("/api/channels/$channel/messages/$id")).body(saveChatMessage)

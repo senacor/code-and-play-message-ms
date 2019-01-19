@@ -12,6 +12,7 @@ class ChatMessageService(
     }
 
     fun saveChatMessage(chanelId: String?, sender: String, message: String): ChatMessage {
+        Metrics.savedTotal.increment()
         return chatMessageRepository.save(ChatMessage(chanelId, sender, message))
     }
 }
