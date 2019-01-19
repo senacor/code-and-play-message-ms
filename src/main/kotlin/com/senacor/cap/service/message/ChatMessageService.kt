@@ -14,6 +14,7 @@ class ChatMessageService (val channelService: ChannelService, val chatMessageRep
     }
 
     fun saveChatMessage(channelId: String, sender: String, message: String): ChatMessage{
+            Metrics.incrementSaves()
            return chatMessageRepository.save(ChatMessage(channelId,sender,message))
     }
 }

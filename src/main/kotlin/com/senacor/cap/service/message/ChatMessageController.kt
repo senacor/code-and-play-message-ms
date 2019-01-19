@@ -10,7 +10,7 @@ public class ChatMessageController ( val service : ChatMessageService) {
     @GetMapping (path= ["/api/channels/{channelId}/messages"])
     fun loadChatMessages(@PathVariable channelId: String):List<ChatMessage> {
         val result = service.loadChatMessages(channelId)
-    //    Metrics.incrementRequests()
+       Metrics.incrementGETRequests()
         return result
     }
 
@@ -18,7 +18,7 @@ public class ChatMessageController ( val service : ChatMessageService) {
     fun newChatMessages(@PathVariable channelId: String, @RequestBody body : ChatMessage): ResponseEntity<ChatMessage> {
         val result = service.saveChatMessage(channelId, body.sender, body.message)
 
-     //   Metrics.incrementRequests()
+        Metrics.incrementPOSTRequests()
         return ResponseEntity.created( URI("/api/channels/$channelId/messages/${result.id}")).build()
     }
     }
