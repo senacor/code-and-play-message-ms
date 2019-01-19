@@ -222,9 +222,32 @@ kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=gr
 
 ### Eigenes Dashboard erstellen
 
+Erstelle dein eigenes Dashboard und visualisiere ein paar Metriken.
+
+### Skalierung
+
+Schaut euch die Datei [kubernetes/deployment.yaml](./kubernetes/deployment.yaml) an und macht dort eine Änderung um zwei statt nur einen Pod eures services zu deployen.
+
+Rendern der Kubernetes Dateien:
+
+Es müssen ein paar Vaiablen gesetzt werden.
+```
+TRAVIS_BUILD_NUMBER=<letze-build-nr-deines-branches-in-travis>
+TRAVIS_BRANCH=<dein-branch-name>
+SERVICE_NAME=message-ms
+DOCKER_IMAGE=$SERVICE_NAME:$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER
+```
+
+Zum Rendern ist folgendes Skript aufzurufen.
+`./script/prepare_deployment_files.sh`
+
+Die gerenderten Dateien sind im Ordner [target/kubernetes](./target/kubernetes) zu finden.
+
+Mit `kubectl apply -f ./target/kubernetes/deployment.yaml` könnt ihr die geänderte Deployment-Konfiguration deployen.
 
 
 
 ## Einen eigenen cluster aufsetzen
 
 Siehe [Play+with+Kubernetes+Istio.pdf](./Play+with+Kubernetes+Istio.pdf)
+
