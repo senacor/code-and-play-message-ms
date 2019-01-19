@@ -10,7 +10,9 @@ spec:
   http:
   - match:
     - uri:
-        prefix: /api/channels/${TRAVIS_BRANCH}/messages
+        prefix: /api/v1/channels/${TRAVIS_BRANCH}/messages
+    rewrite:
+      uri: /api/channels/${TRAVIS_BRANCH}/messages
     route:
     - destination:
         host: ${SERVICE_NAME}-${TRAVIS_BRANCH}
