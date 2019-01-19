@@ -13,11 +13,13 @@ class ChatMessageController(
 
     @GetMapping("/api/channels/{channelId}/messages")
     fun loadChatMessages(@PathVariable( value="channelId") channelId: String): List<ChatMessage> {
+        Metrics.requestMessages.increment()
         return chatMessageService.loadChatMessages( channelId )
     }
 
     @PostMapping("/api/channels/{channelId}/messages")
     fun newChatMessages(@PathVariable( value="channelId" ) channelId: String, @RequestBody chatMessage: ChatMessage): ResponseEntity<ChatMessage> {
+        Metrics.savedMessages.increment()
         var rChatMessage: ChatMessage = chatMessageService.saveChatMessage(channelId, chatMessage.sender, chatMessage.message)
         var location: URI = URI("/api/channels/${rChatMessage.channelId}/messages/${rChatMessage.id}")
         return ResponseEntity.created(location).build()

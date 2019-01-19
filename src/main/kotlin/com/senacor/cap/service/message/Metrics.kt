@@ -6,7 +6,10 @@ object Metrics {
 
     private const val prefix = "message_ms_"
 
-    internal val someCounter = Metrics.counter(prefix + "some_counter_total")
+    internal val savedMessages = Metrics.counter(prefix + "messages_saved_total")
+    internal val requestMessages =  Metrics.counter(prefix + "messages_request_total")
+
+
 
     /**
      * usage example:
