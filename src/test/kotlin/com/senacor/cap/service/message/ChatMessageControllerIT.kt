@@ -48,11 +48,11 @@ class ChatMessageControllerIT {
 
 
         mockMvc.perform(get("/api/channels/{channelId}/messages", channelId).accept(MediaType.APPLICATION_JSON_UTF8))
-            .andExpect(status().isOk)
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-            // Reihenfolge umgekehrt, weil wir ja von Asc auf Desc gewechselt haben
-            .andExpect(jsonPath("$[1].message").value("Hello"))
-            .andExpect(jsonPath("$[0].message").value("World!"))
+                .andExpect(status().isOk)
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                // Reihenfolge umgekehrt, weil wir ja von Asc auf Desc gewechselt haben
+                .andExpect(jsonPath("$[1].message").value("Hello"))
+                .andExpect(jsonPath("$[0].message").value("World!"))
     }
 
     @Test
@@ -61,9 +61,9 @@ class ChatMessageControllerIT {
         repository.save(ChatMessage(channelId, "julia@test.de", "Have fun!"))
 
         mockMvc.perform(get("/api/channels/{channelId}/messages", channelId).accept(MediaType.APPLICATION_JSON_UTF8))
-            .andExpect(status().isOk)
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-            .andExpect(jsonPath("$[0].message").value("Have fun!"))
+                .andExpect(status().isOk)
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(jsonPath("$[0].message").value("Have fun!"))
     }
 
     @Test
