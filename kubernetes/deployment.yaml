@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+
   name: ${SERVICE_NAME}-${TRAVIS_BRANCH}
   #namespace: services
   labels:
@@ -9,7 +10,7 @@ metadata:
     serviceVersion: "${TRAVIS_BRANCH}-${TRAVIS_BUILD_NUMBER}"
 
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: "${SERVICE_NAME}-${TRAVIS_BRANCH}"

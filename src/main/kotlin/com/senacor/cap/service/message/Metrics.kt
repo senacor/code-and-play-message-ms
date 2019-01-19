@@ -11,8 +11,8 @@ object Metrics {
     private const val prefix = "message_ms_"
 
     //internal val someCounter = Metrics.counter(prefix + "some_counter_total")
-    internal val requestCounterPost = Metrics.counter(prefix + "message_ms_messages_requests_total",Tags.of(Tag.of("method","POST")))
-    internal val requestCounterGet = Metrics.counter(prefix + "message_ms_messages_requests_total",Tags.of(Tag.of("method","GET")))
+    internal val requestCounterPost = Metrics.counter(prefix + "GET_messages_requests_total",Tags.of(Tag.of("method","POST")))
+    internal val requestCounterGet = Metrics.counter(prefix + "POST_messages_requests_total",Tags.of(Tag.of("method","GET")))
     internal val saveCounter = Metrics.counter(prefix + "message_ms_messages_saved_total")
 
     fun incrementGetRequests() {
