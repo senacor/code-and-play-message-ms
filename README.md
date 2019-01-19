@@ -145,7 +145,11 @@ Schau dir die Datei [.travis.yml](./.travis.yml) an und versuche zu verstehen, w
 
 ### Login via gcloud SDK
 
-...
+```bash
+gcloud auth login
+```
+
+Siehe https://cloud.google.com/sdk/gcloud/reference/auth/login
 
 ### Zugriff auf das Kubernetes Cluster via kubectl
 
@@ -212,3 +216,5 @@ kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=gr
 [http://localhost:3000/dashboards](http://localhost:3000/dashboards)
 
 ### Eigenes Dashboard erstellen
+
+
