@@ -11,7 +11,7 @@ class ChatMessageService(
         return chatMessageRepository.findByChannelIdOrderByCreationTimestampDesc(s)
     }
 
-    fun saveChatMessage(chanelId: String, sender: String, message: String): ChatMessage {
+    fun saveChatMessage(chanelId: String?, sender: String, message: String): ChatMessage {
         return chatMessageRepository.save(ChatMessage(chanelId, sender, message))
     }
 }

@@ -17,7 +17,7 @@ class ChatMessageController(val serviceMock: ChatMessageService) {
 
     @PostMapping("/api/channels/{channel}/messages")
     fun newChatMessages(@PathVariable channel: String?, @RequestBody chatMessage: ChatMessage): ResponseEntity<ChatMessage> {
-        var saveChatMessage = serviceMock.saveChatMessage(chatMessage.channelId!!, chatMessage.sender, chatMessage.message)
+        var saveChatMessage = serviceMock.saveChatMessage(channel, chatMessage.sender, chatMessage.message)
         val id = saveChatMessage.id
         return ResponseEntity.created(URI("/api/channels/$channel/messages/$id")).body(saveChatMessage)
     }
