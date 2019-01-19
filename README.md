@@ -218,3 +218,8 @@ kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=gr
 ### Eigenes Dashboard erstellen
 
 
+
+
+## Einen eigenen cluster aufsetzen
+
+Siehe [Play+with+Kubernetes+Istio.pdf](./Play+with+Kubernetes+Istio.pdf)
