@@ -7,13 +7,14 @@ metadata:
     app: "${SERVICE_NAME}-${TRAVIS_BRANCH}"
     chatChannel: "${TRAVIS_BRANCH}"
     serviceVersion: "${TRAVIS_BRANCH}-${TRAVIS_BUILD_NUMBER}"
-
+    event: "CodeCamp"
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: "${SERVICE_NAME}-${TRAVIS_BRANCH}"
       chatChannel: "${TRAVIS_BRANCH}"
+      event: "CodeCamp"
   template:
     metadata:
       #namespace: services
@@ -21,6 +22,7 @@ spec:
         app: "${SERVICE_NAME}-${TRAVIS_BRANCH}"
         chatChannel: "${TRAVIS_BRANCH}"
         serviceVersion: "${TRAVIS_BRANCH}-${TRAVIS_BUILD_NUMBER}"
+        event: "CodeCamp"
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/path: "/prometheus"
