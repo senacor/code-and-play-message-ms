@@ -232,10 +232,10 @@ Rendern der Kubernetes Dateien:
 
 Es müssen ein paar Vaiablen gesetzt werden.
 ```
-TRAVIS_BUILD_NUMBER=<letze-build-nr-deines-branches-in-travis>
-TRAVIS_BRANCH=<dein-branch-name>
-SERVICE_NAME=message-ms
-DOCKER_IMAGE=$SERVICE_NAME:$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER
+export TRAVIS_BUILD_NUMBER=<letze-build-nr-deines-branches-in-travis>
+export TRAVIS_BRANCH=<dein-branch-name>
+export SERVICE_NAME=message-ms
+export DOCKER_IMAGE=$SERVICE_NAME:$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER
 ```
 
 Zum Rendern ist folgendes Skript aufzurufen.
