@@ -7,10 +7,10 @@ import org.junit.Test
 
 class ChatMessageServiceTest {
     private val channelServiceMock = mockk<ChannelService>()
-    /*
+
     private val chatMessageRepository = mockk<ChatMessageRepository>()
 
-    private val service = ChatMessageService(channelServiceMock, chatMessageRepository)
+    private val service = ChatMessageService(chatMessageRepository)
 
     @Test
     fun fetchChatMessages() {
@@ -20,7 +20,7 @@ class ChatMessageServiceTest {
             ChatMessage("dev", "s@t.de", "World!")
         )
 
-        every { chatMessageRepository.findByChannelIdOrderByCreationTimestampDesc("dev") } returns expectedList
+        every { chatMessageRepository.findAllByChannelOrderByMessageDesc("dev") } returns expectedList
 
         val result = service.loadChatMessages("dev")
 
@@ -29,12 +29,4 @@ class ChatMessageServiceTest {
         assertEquals("World!", result[1].message)
     }
 
-    @Test(expected = ChannelNotFoundException::class)
-    @Throws(ChannelNotFoundException::class)
-    fun loadChatMessagesThrowsExceptionIfChannelNotExist() {
-        every { channelServiceMock.existsChannel("not-a-channel") } returns false
-
-        service.loadChatMessages("not-a-channel")
-    }
-    */
 }
