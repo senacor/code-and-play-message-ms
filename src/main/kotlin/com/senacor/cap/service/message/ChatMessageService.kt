@@ -14,6 +14,7 @@ class ChatMessageService(private val channelService: ChannelService, private val
     fun saveChatMessage(channelId: String, sender : String, message: String): ChatMessage{
         if (channelService.existsChannel(channelId)){
             return chatMessageRepository.save (ChatMessage(channelId, sender, message))
+            Metrics.incrementSaveCounter()
         }
         else throw ChannelNotFoundException()
     }
