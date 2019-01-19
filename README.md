@@ -191,6 +191,11 @@ Erfasse zwei Metriken:
 - `message_ms_messages_saved_total` - Zählt wie oft die save-Methode des `ChatMessageServices` aufgerufen wird.
 - `message_ms_messages_requests_total` - Zählt die API Request. Verwende ein tag um zwischen POST und GET Request zu unterscheiden.
 
+Tags können wie folgt erstellt werden:
+```kotlin
+Tags.of(Tag.of("method", "GET")
+```
+
 Definiere die Metriken in [`Metrics`](./src/main/kotlin/com/senacor/cap/service/message/Metrics.kt).
 
 Info: Wir verwenden [Micrometer](https://micrometer.io/docs/registry/prometheus).
@@ -201,7 +206,7 @@ Info: Wir verwenden [Micrometer](https://micrometer.io/docs/registry/prometheus)
 kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=prometheus -o jsonpath='{.items[0].metadata.name}') 9090:9090
 ```
 
-[http://localhost:9090/dashboards](http://localhost:9090/dashboards)
+[http://localhost:9090](http://localhost:9090)
 
 ### Grafana
 
