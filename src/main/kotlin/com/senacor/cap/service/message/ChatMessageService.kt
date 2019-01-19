@@ -15,4 +15,12 @@ class ChatMessageService (val service: ChannelService, val repository: ChatMessa
         }
         return this.repository.findByChannelIdOrderByCreationTimestampDesc(channel)
     }
+
+    fun saveChatMessage(channelId: String, sender: String, message: String): ChatMessage {
+        val chatMessage = ChatMessage(channelId, sender, message)
+        repository.save(chatMessage)
+        //Metrics.incrementSavedMessages()
+        return chatMessage
+
+    }
 }
