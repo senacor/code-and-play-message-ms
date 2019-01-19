@@ -1,6 +1,8 @@
 package com.senacor.cap.service.message
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.senacor.cap.service.message.models.ChatMessage
+import com.senacor.cap.service.message.repositories.ChatMessageRepository
 import org.hamcrest.CoreMatchers.startsWith
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -24,7 +26,6 @@ import org.springframework.web.context.WebApplicationContext
 @RunWith(SpringRunner::class)
 class ChatMessageControllerIT {
 
-    /*
     private lateinit var mockMvc: MockMvc
 
     @Autowired
@@ -75,26 +76,25 @@ class ChatMessageControllerIT {
                 .andExpect(status().isNotFound)
     }
 
-    @Test
-    @Throws(Exception::class)
-    fun newMessages() {
-        val channel = "dev"
-        val newMessage = ChatMessage(channel, "xy@test.de", "My first message")
-
-        mockMvc.perform(post("/api/channels/{channel}/messages", channel)
-                .content(objectMapper.writeValueAsString(newMessage))
-                .contentType(MediaType.parseMediaType("application/json;charset=UTF-8"))
-                .accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
-                .andExpect(status().isCreated)
-                .andExpect(header().string("location", startsWith("/api/channels/dev/messages/")))
-                .andDo { result ->
-                    // Check if the new message can be found in the database
-                    val location = result.response.getHeader("location")
-                    val newMessageId = location!!.substring(location.lastIndexOf("/") + 1)
-                    val savedMessage = repository.findById(newMessageId.toLong()).get()
-                    assertEquals("xy@test.de", savedMessage.sender)
-                    assertEquals("My first message", savedMessage.message)
-                }
-    }
-    */
+//    @Test
+//    @Throws(Exception::class)
+//    fun newMessages() {
+//        val channel = "dev"
+//        val newMessage = ChatMessage(channel, "xy@test.de", "My first message")
+//
+//        mockMvc.perform(post("/api/channels/{channel}/messages", channel)
+//                .content(objectMapper.writeValueAsString(newMessage))
+//                .contentType(MediaType.parseMediaType("application/json;charset=UTF-8"))
+//                .accept(MediaType.parseMediaType("application/json;charset=UTF-8")))
+//                .andExpect(status().isCreated)
+//                .andExpect(header().string("location", startsWith("/api/channels/dev/messages/")))
+//                .andDo { result ->
+//                    // Check if the new message can be found in the database
+//                    val location = result.response.getHeader("location")
+//                    val newMessageId = location!!.substring(location.lastIndexOf("/") + 1)
+//                    val savedMessage = repository.findById(newMessageId.toLong()).get()
+//                    assertEquals("xy@test.de", savedMessage.sender)
+//                    assertEquals("My first message", savedMessage.message)
+//                }
+//    }
 }

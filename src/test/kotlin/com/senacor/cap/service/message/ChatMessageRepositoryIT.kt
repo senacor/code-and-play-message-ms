@@ -1,5 +1,7 @@
 package com.senacor.cap.service.message
 
+import com.senacor.cap.service.message.models.ChatMessage
+import com.senacor.cap.service.message.repositories.ChatMessageRepository
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -14,7 +16,6 @@ import java.time.Instant
 @RunWith(SpringRunner::class)
 class ChatMessageRepositoryIT {
 
-    /*
     @Autowired
     private lateinit var repository: ChatMessageRepository
 
@@ -56,5 +57,4 @@ class ChatMessageRepositoryIT {
 
         assertEquals(3, messages.count())
     }
-    */
 }
