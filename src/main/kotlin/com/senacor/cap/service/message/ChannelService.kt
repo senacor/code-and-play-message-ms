@@ -6,4 +6,6 @@ import org.springframework.stereotype.Service
 class ChannelService() {
 
     fun existsChannel(channelId: String) = true
+
 }
+

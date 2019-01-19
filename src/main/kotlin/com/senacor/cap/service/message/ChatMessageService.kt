@@ -12,4 +12,8 @@ class ChatMessageService (val channelService: ChannelService, val chatMessageRep
 
         else throw ChannelNotFoundException()
     }
+
+    fun saveChatMessage(channelId: String, sender: String, message: String): ChatMessage{
+           return chatMessageRepository.save(ChatMessage(channelId,sender,message))
+    }
 }

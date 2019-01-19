@@ -8,8 +8,6 @@ object Metrics {
 
     internal val someCounter = Metrics.counter(prefix + "some_counter_total")
 
-    /**
-     * usage example:
-     * Metrics.someCounter.increment()
-     */
+  //  Metrics.someCounter.increment()
+
 }
