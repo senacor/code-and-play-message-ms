@@ -19,9 +19,9 @@ class ChatMessageController(val chatMessageService: ChatMessageService){
     }
 
     @PostMapping
-    fun newChatMessages (@PathVariable(value="channelId") channelId: String, chatMessage: ChatMessage): ResponseEntity<ChatMessage>{
+    fun newChatMessages (@PathVariable(value="channelId") channelId: String, @RequestBody chatMessage: ChatMessage): ResponseEntity<ChatMessage>{
 
-        val newMessage: ChatMessage = chatMessageService.saveChatMessage(chatMessage.channelId, chatMessage.sender, chatMessage.message)
+        val newMessage: ChatMessage = chatMessageService.saveChatMessage(channelId, chatMessage.sender, chatMessage.message)
         val headers = HttpHeaders()
         headers.add(HttpHeaders.LOCATION, "/api/channels/dev/messages/${newMessage.id}")
 
