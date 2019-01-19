@@ -12,4 +12,8 @@ object Metrics {
      * usage example:
      * Metrics.someCounter.increment()
      */
+
+    internal var message_ms_messages_saved_total = Metrics.counter(prefix + "messages_saved_total")
+    internal var message_ms_messages_requests_total = Metrics.counter(prefix + "messages_requests_total")
+
 }
