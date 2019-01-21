@@ -8,6 +8,10 @@ object Metrics {
 
     internal val someCounter = Metrics.counter(prefix + "some_counter_total")
 
+    internal val messages_saved_total = Metrics.counter(prefix + "messages_saved_total")
+
+    internal val messages_requests_total = Metrics.counter(prefix + "messages_requests_total")
+
     /**
      * usage example:
      * Metrics.someCounter.increment()

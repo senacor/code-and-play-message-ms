@@ -27,7 +27,7 @@ class ChatMessageControllerIT {
     @Test
     fun test() {}
 
-    /*
+
     private lateinit var mockMvc: MockMvc
 
     @Autowired
@@ -99,5 +99,5 @@ class ChatMessageControllerIT {
                     assertEquals("My first message", savedMessage.message)
                 }
     }
-    */
+
 }
