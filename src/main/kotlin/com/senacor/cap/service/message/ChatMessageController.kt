@@ -19,4 +19,9 @@ class ChatMessageController(val service: ChatMessageService) {
         return ResponseEntity.created(URI.create("/api/channels/dev/messages/"+saveChatMessage.id)).build()
     }
 
+    @DeleteMapping("/api/channels/{channelId}/messages/{id}")
+    fun deleteChatMessage(@PathVariable channelId: String, @PathVariable id:Long) {
+        service.deleteChatMessage(id)
+    }
+
 }
