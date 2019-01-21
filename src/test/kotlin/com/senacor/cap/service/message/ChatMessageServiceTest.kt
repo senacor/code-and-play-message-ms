@@ -7,7 +7,7 @@ import org.junit.Test
 
 class ChatMessageServiceTest {
     private val channelServiceMock = mockk<ChannelService>()
-    /*
+
     private val chatMessageRepository = mockk<ChatMessageRepository>()
 
     private val service = ChatMessageService(channelServiceMock, chatMessageRepository)
@@ -36,5 +36,5 @@ class ChatMessageServiceTest {
 
         service.loadChatMessages("not-a-channel")
     }
-    */
+
 }
