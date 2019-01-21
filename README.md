@@ -57,10 +57,10 @@ git push
 ```
 
 Sobald der Branch gepushed ist baut Travis-CI den Branch und deployed den Services ins Cluster.
-Travis-CI: https://travis-ci.org/senacor/code-and-play-message-ms/branches
+Travis-CI: [https://travis-ci.org/senacor/code-and-play-message-ms/branches](https://travis-ci.org/senacor/code-and-play-message-ms/branches)
 
 Im Chat-Frontend sollte daraufhin ein Channel mit dem Namen des Branches auftauchen.
-Frontend-Url: http://35.242.204.241/frontend/
+Frontend-URL: [http://35.242.204.241/frontend/](http://35.242.204.241/frontend/)
 
 ## 2 Kotlin Basics
 
@@ -83,7 +83,12 @@ beginnen, also bottom-up.
 Spring bietet die Möglichkeit seine Datenklassen (auch gern Models genannt) 
 direkt als Entitäten zu kennzeichnen. Schaut euch hierzu die **@Entity** 
 Annotation an und implementiert anschließend euer Model für Chatnachrichten (`ChatMessage`).
-Ihr benötiged die folgenden Properties: channelId, sender, message, creationTimestamp, id
+Ihr benötiged die folgenden Properties: 
+- channelId (Type: String?, default value: null)
+- sender (Type: String)
+- message (Type: String)
+- creationTimestamp (Type: Instant, default value: Instant.now() ) 
+- id (Type: Long?, default value: null)
 
 ### 3.2 Repositories
 
@@ -96,7 +101,9 @@ Artikel an:
 
  * https://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
  
-Implementiert nun ein Repository für eure Chatnachrichten.
+Erstellt ein Repository für eure Chatnachrichten.
+
+Tip: Ihr braucht auch die Annotationen `@Id` und `@GeneratedValue`.
 
 Ihr könnt den Code in `ChatMessageRepositoryIT` auskommentieren um eure Repository zu testen.
 
@@ -237,6 +244,9 @@ export TRAVIS_BRANCH=<dein-branch-name>
 export SERVICE_NAME=message-ms
 export DOCKER_IMAGE=$SERVICE_NAME:$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER
 ```
+
+Die Nummer deines letzten Builds findest du hier:
+https://travis-ci.org/senacor/code-and-play-message-ms/branches
 
 Zum Rendern ist folgendes Skript aufzurufen.
 `./script/prepare_deployment_files.sh`
