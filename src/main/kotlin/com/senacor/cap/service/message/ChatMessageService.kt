@@ -20,11 +20,13 @@ class ChatMessageService(
 
     fun saveChatMessage(channelId: String, sender: String, message: String): ChatMessage {
 
-        Metrics.messages_saved_total.increment()
+
 
         if(!channelServiceMock.existsChannel(channelId)) {
             throw ChannelNotFoundException()
         }
+
+        Metrics.messages_saved_total.increment()
 
         return chatMessageRepository.save(ChatMessage(channelId, sender, message))
     }
