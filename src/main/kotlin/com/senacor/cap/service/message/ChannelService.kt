@@ -7,3 +7,5 @@ class ChannelService() {
 
     fun existsChannel(channelId: String) = true
 }
+
+// for commit
