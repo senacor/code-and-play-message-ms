@@ -11,7 +11,7 @@ import java.net.URISyntaxException
 
 class ChatMessageControllerTest {
 
-    /*
+
     private var serviceMock = mockk<ChatMessageService>()
 
     private var controller = ChatMessageController(serviceMock)
@@ -42,5 +42,5 @@ class ChatMessageControllerTest {
         assertEquals(URI("/api/channels/dev/messages/123"), result.headers.location)
         verify { serviceMock.saveChatMessage("dev", "sender@test.de", "Hello World!") }
     }
-    */
+
 }
