@@ -26,6 +26,7 @@ class ChatMessageController(private var messageService: ChatMessageService) {
         Metrics.messagesPostRequests.increment()
         val newChatMessage = messageService.saveChatMessage(channel, chatMessage.sender, chatMessage.message)
 
+        // bla
         val location = UriComponentsBuilder.newInstance().path(CHAT_MESSAGES_PATH)
             .pathSegment(newChatMessage.id!!.toString()).buildAndExpand(channel)
         return ResponseEntity.created(location.toUri()).build()
