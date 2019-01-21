@@ -17,6 +17,7 @@ class ChatMessageService(cs : ChannelService, cmr : ChatMessageRepository) {
     }
 
     fun saveChatMessage(channelId : String, sender : String, message : String) : ChatMessage{
+        Metrics.savedTotal.increment()
         if(channelService.existsChannel(channelId)){
             return chatMessageRepository.save(ChatMessage(channelId, sender, message))
         }else{

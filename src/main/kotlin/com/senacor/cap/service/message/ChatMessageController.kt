@@ -12,12 +12,14 @@ class ChatMessageController(cms : ChatMessageService) {
 
     @GetMapping
     fun loadChatMessages(@PathVariable(value="channelId") channelId : String) : List<ChatMessage>{
+        Metrics.requestsTotalGet.increment()
         return chatMessageService.loadChatMessages(channelId)
     }
 
 
     @PostMapping
     fun newChatMessage(@PathVariable(value="channelId") channelId : String, @RequestBody cm : ChatMessage) : ResponseEntity<ChatMessage>{
+        Metrics.requestsTotalPost.increment()
         val newChatMessage : ChatMessage = chatMessageService.saveChatMessage(channelId, cm.sender, cm.message)
         return  ResponseEntity.created(URI("/api/channels/"+channelId+"/messages/"+newChatMessage.id)).build()
     }
