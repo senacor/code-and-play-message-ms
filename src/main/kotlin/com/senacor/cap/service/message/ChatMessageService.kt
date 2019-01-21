@@ -11,8 +11,15 @@ class ChatMessageService(val channelService: ChannelService, val chatMessageRepo
         return chatMessageRepository.findByChannelIdOrderByCreationTimestampDesc(channelId)
     }
 
-    fun saveChatMessage(channel: String, sender: String, message: String): ChatMessage {
-        return chatMessageRepository.save(ChatMessage(channel,sender,message))
+    fun saveChatMessage(channelId: String, sender: String, message: String): ChatMessage {
+        if (!channelService.existsChannel(channelId)) {
+            throw ChannelNotFoundException()
+        }
+        return chatMessageRepository.save(ChatMessage(channelId,sender,message))
+    }
+
+    fun deleteChatMessage(id: Long) {
+        chatMessageRepository.deleteById(id);
     }
 
 }
