@@ -17,7 +17,7 @@ class ChatMessageRepositoryIT {
     @Test
     fun test() {}
 
-    /*
+
     @Autowired
     private lateinit var repository: ChatMessageRepository
 
@@ -59,5 +59,5 @@ class ChatMessageRepositoryIT {
 
         assertEquals(3, messages.count())
     }
-    */
+
 }
