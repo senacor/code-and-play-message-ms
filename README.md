@@ -138,7 +138,7 @@ der euren Service aufruft.
  
 Verwende den Unit-Test `ChatMessageControllerTest` und den Integrations-Test `ChatMessageControllerIT`
 
-### 3 (Bonus-Aufgabe1) Löschen von Nachrichten
+### 3 (Bonus-Aufgabe 1) Löschen von Nachrichten
 
 Implementiere das Löschen von Nachrichten. Dazu muss die REST API erweitert werden, so das auch DELETE unterstützt wird.
 Ein Request auf `DELETE /api/channels/{channelId}/messages/{messageId}` soll die Nachricht aus der Datenbank löschen.
@@ -147,6 +147,8 @@ Ein Request auf `DELETE /api/channels/{channelId}/messages/{messageId}` soll die
 
 Wie kommen deine Änderungen am Service auf unseren Cluster?
 Schau dir die Datei [.travis.yml](./.travis.yml) an und versuche zu verstehen, wie das Build und das Deployment des Services funktioniert.
+
+
 
 ## 4 GKE, Kubernetes, Istio
 
@@ -227,7 +229,7 @@ kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=gr
 
 [http://localhost:3000/dashboards](http://localhost:3000/dashboards)
 
-### Eigenes Dashboard erstellen
+### (Bonus-Aufgabe) Eigenes Dashboard erstellen
 
 Erstelle dein eigenes Dashboard und visualisiere ein paar Metriken.
 
@@ -256,14 +258,14 @@ Die gerenderten Dateien sind im Ordner [target/kubernetes](./target/kubernetes) 
 Mit `kubectl apply -f ./target/kubernetes/deployment.yaml` könnt ihr die geänderte Deployment-Konfiguration deployen.
 
 
-### API Versioning
+### (Bonus-Aufgabe) API Versioning
 
 Änder den Pfad unter dem dein Service zu erreichen is von `/api/channels/${TRAVIS_BRANCH}/messages` auf `/api/v1/channels/${TRAVIS_BRANCH}/messages`.
 
 Dazu musst du Änderungen in [kubernetes/virtualservice.yaml](./kubernetes/virtualservice.yaml) machen.
 
 
-## Einen eigenen cluster aufsetzen
+## (Bonus-Aufgabe) Einen eigenen cluster aufsetzen
 
 Siehe [Play+with+Kubernetes+Istio.pdf](./Play+with+Kubernetes+Istio.pdf)
 
