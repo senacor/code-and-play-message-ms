@@ -1,5 +1,10 @@
 #!/bin/bash
 
+export TRAVIS_BUILD_NUMBER=7b09e77
+export TRAVIS_BRANCH=astefa2s
+export SERVICE_NAME=message-ms
+export DOCKER_IMAGE=$SERVICE_NAME:$TRAVIS_BRANCH-$TRAVIS_BUILD_NUMBER
+
 set -eu
 
 if [[ -z "$SERVICE_NAME" ]]; then
