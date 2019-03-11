@@ -31,4 +31,9 @@ class ChatMessageService(
         return chatMessageRepository.save(ChatMessage(channelId, sender, message))
     }
 
+
+    fun deleteChatMessage(channelId: String, messageId: Long) {
+        chatMessageRepository.deleteById(messageId)
+    }
+
 }
