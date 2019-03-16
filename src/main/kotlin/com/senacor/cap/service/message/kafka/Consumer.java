@@ -17,10 +17,11 @@ public class Consumer {
     @Autowired
     private ChatMessageService chatMessageService;
 
+    private final String TOPIC = "12";
 
-    @KafkaListener(topics = "default", groupId = "group_id")
+    @KafkaListener(topics = TOPIC, groupId = "group_id")
     public void consume(String message) throws IOException {
-        logger.info(String.format("#### -> Consumed message -> %s", message));
+        logger.info(String.format("#### -> topic: " + TOPIC +  " -> Consumed message -> %s", message));
 
         // save message
         chatMessageService.saveChatMessage("default", "engineer", message);
